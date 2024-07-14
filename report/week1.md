@@ -5,14 +5,14 @@
 
 1. **目的**: learn **structured and plannable state and action spaces** directly from **unstructured videos**, perform procedure planning in the **learned latent space**.
 2. **方法** (leveraging the **conjugate relationships** between states and actions to impose **structured priors**): 
-   * **Forward Dynamics**: $T(x_{t+1}|x_t,\bar{a}_t)$
+   * **Forward Dynamics**: $`T(x_{t+1}|x_t,\bar{a}_t)`$
    * **Conjugate Dynamics** (satisfy the precondition of next action): $P(\bar{a}_t|x_t,\bar{a}_{t-1})$
 
 * **$f, g$**: **MLP**
 * $T$: **MLP**
 * $P$: **RNN**, concat with goal embedding 
 
-![image-20240705204713449](./assets/image-20240705204713449.png)
+![image-20240705204713449](../assets/image-20240705204713449.png)
 
 ## Procedure Planning in Instructional Videos via Contextual Modeling and Model-based Policy Learning    2021
 
@@ -22,7 +22,7 @@
 * **Generation Model**: $p(a_{1:T}, s_{1:T} \mid z_c) = \prod_{t=1}^{T} \pi_{\theta}(a_t \mid s_t) \mathcal{T}_{\mu}(s_t \mid z_c, s_{t-1}, a_{t-1})$
   * 
 
-![image-20240707105317453](./assets/image-20240707105317453.png)
+![image-20240707105317453](../assets/image-20240707105317453.png)
 
 ## PlaTe: Visually-Grounded Planning with Transformers in Procedural Tasks    2021
 
@@ -37,7 +37,7 @@
 * **inference** (stochastic nature of predictions, planning is often low quality with a single roll-out): **beam search**
 * **Limitation**:
 
-![image-20240705220248964](./assets/image-20240705220248964.png)
+![image-20240705220248964](../assets/image-20240705220248964.png)
 
 ## P3IV: Probabilistic Procedure Planning from Instructional Videos with Weak Supervision    2022
 
@@ -68,7 +68,7 @@
 # TODO
 ```
 
-![image-20240704163515969](./assets/image-20240704163515969.png)
+![image-20240704163515969](../assets/image-20240704163515969.png)
 
 ## Skip-Plan: Procedure Planning in Instructional Videos via Condensed Action Space Learning    2023
 
@@ -88,7 +88,7 @@
 # TODO
 ```
 
-![image-20240704173128347](./assets/image-20240704173128347.png)
+![image-20240704173128347](../assets/image-20240704173128347.png)
 
 ## Event-Guided Procedure Planning from Instructional Videos with Text Supervision    2023
 
@@ -108,7 +108,7 @@
 
 * **Loss**: $L_{action}$ (InfoNCE) + $L_{event}$ (CE)
 
-![image-20240704175815837](./assets/image-20240704175815837.png)
+![image-20240704175815837](../assets/image-20240704175815837.png)
 
 ## PDPP: Projected Diffusion for Procedure Planning in Instructional Videos    2023
 
@@ -149,7 +149,7 @@ $$
 * **Loss**: $\mathcal{L}_{\text{diff}} = \sum_{n=1}^{N} \left( f_{\theta}(x_n, n) - x_0 \right)^2$ , **weighted**
 * **Inference**: 逐步去噪、不确定性处理、模型稳定性
 
-![image-20240706211931271](./assets/image-20240706211931271.png)
+![image-20240706211931271](../assets/image-20240706211931271.png)
 
 ## Why Not Use Your Textbook? Knowledge-Enhanced Procedure Planning of Instructional Videos    2024
 
@@ -181,7 +181,7 @@ $$
 
 * **Limitation**
 
-![image-20240706221503678](./assets/image-20240706221503678.png)
+![image-20240706221503678](../assets/image-20240706221503678.png)
 
 ## SCHEMA: STATE CHANGES MATTER FORPROCEDURE PLANNING IN INSTRUCTIONAL VIDEOS    2024
 
@@ -189,4 +189,4 @@ $$
 
 
 
-![image-20240707155551614](./assets/image-20240707155551614.png)
+![image-20240707155551614](../assets/image-20240707155551614.png)
