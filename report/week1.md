@@ -185,7 +185,35 @@ a_1 & a_2 & \cdots & a_{T-1} & a_T
 
 ## SCHEMA: STATE CHANGES MATTER FORPROCEDURE PLANNING IN INSTRUCTIONAL VIDEOS    2024
 
+1. **解决的问题**：sequence modeling of steps with only sequence-level annotations, but overlook the roles of states
+2. **方法**: investigate the **causal relations** between steps and states in procedures (represent each **state-modifying step** as **state changes** and **track the state changes**), learn a **more structured** state space, align the state-modifying actions with their associated state changes
 3. **建模**: $`p(a_{1:T} \mid s_0, s_T) = \int \underbrace{p(a_{1:T} \mid s_{0:T})}_{\text{step prediction}} \underbrace{p(s_{1:(T-1)} \mid s_0, s_T)}_{\text{mid-state prediction}} \, \mathrm{d}s_{1:(T-1)}`$
+
+* **step representation** as state changes in language: represent steps as their before-states and after-states (COT):
+
+  * **more details** about attributes, locations, relation of objects
+
+* **state representation**:
+
+  * state encoder
+  * description encoder
+
+* **mid-state prediction**: non-autoregressive transformer, memory (state description), add task information to input
+
+* **step prediction**: non-autoregressive transformer, FFN, add task information to input
+
+* **Training**:
+
+  * **state space learning** (alignment, projection): InfoNCE, $`sim`$ function        tracking ?
+
+  * **masked state modeling**: use LLMs-generated **state descriptions as guidance** (association between state and state description):
+    ```math
+    s_t^{\text{dec}} = \frac{1}{2K} \left( \sum_{j=1}^{K} d_{a_t,j}^{\text{enc,a}} + d_{a_{t+1},j}^{\text{enc,b}} \right), \quad L_s^{\text{dec}} = \sum_{t=1}^{T-1} (\hat{s}_t^{\text{dec}} - s_t^{\text{dec}})^2
+    ```
+
+  * **masked step modeling**: CE
+
+* **Inference**: Viterbi algorithm (non-autoregressive Transformer model may **make insufficient use of the temporal relation information** among the action steps)
 
 
 
