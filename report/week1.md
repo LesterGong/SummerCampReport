@@ -207,9 +207,9 @@ a_1 & a_2 & \cdots & a_{T-1} & a_T
   * **state space learning** (alignment, projection): InfoNCE, $`sim`$ function        tracking ?
 
   * **masked state modeling**: use LLMs-generated **state descriptions as guidance** (association between state and state description):
-    ```math
-    s_t^{\text{dec}} = \frac{1}{2K} \left( \sum_{j=1}^{K} d_{a_t,j}^{\text{enc,a}} + d_{a_{t+1},j}^{\text{enc,b}} \right), \quad L_s^{\text{dec}} = \sum_{t=1}^{T-1} (\hat{s}_t^{\text{dec}} - s_t^{\text{dec}})^2
-    ```
+```math
+s_t^{\text{dec}} = \frac{1}{2K} \left( \sum_{j=1}^{K} d_{a_t,j}^{\text{enc,a}} + d_{a_{t+1},j}^{\text{enc,b}} \right), \quad L_s^{\text{dec}} = \sum_{t=1}^{T-1} (\hat{s}_t^{\text{dec}} - s_t^{\text{dec}})^2
+```
 
   * **masked step modeling**: CE
 
